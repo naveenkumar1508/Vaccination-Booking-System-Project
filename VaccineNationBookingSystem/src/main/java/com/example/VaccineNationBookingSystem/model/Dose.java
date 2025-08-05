@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
@@ -25,7 +26,10 @@ public class Dose {
     @Enumerated(value = EnumType.STRING)
     private VaccineBrand vaccineBrand;
 
-    private boolean taken;
-
+    @CreationTimestamp
     private Date dateOfVaccination;
+
+    @OneToOne        //1st One -> Dose(Current), 2nd One - patient(connecting)
+    @JoinColumn //create the foreign key column patient_id
+    Patient patient;
 }

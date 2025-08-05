@@ -3,10 +3,7 @@ package com.example.VaccineNationBookingSystem.controller;
 import com.example.VaccineNationBookingSystem.model.Patient;
 import com.example.VaccineNationBookingSystem.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/patient") //this tells the common endpoint for all the apis
@@ -28,6 +25,12 @@ public class PatientController {
         {
             return e.getMessage();
         }
+    }
+
+    @GetMapping("/get")
+    public Patient getPatient(@RequestParam("id") int id)
+    {
+        return patientService.getPatient(id);
     }
 
 }
