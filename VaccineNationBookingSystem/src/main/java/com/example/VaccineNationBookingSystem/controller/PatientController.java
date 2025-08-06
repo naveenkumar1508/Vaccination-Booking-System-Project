@@ -3,6 +3,8 @@ package com.example.VaccineNationBookingSystem.controller;
 import com.example.VaccineNationBookingSystem.model.Patient;
 import com.example.VaccineNationBookingSystem.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,16 +16,16 @@ public class PatientController {
     PatientService patientService;
 
     @PostMapping("/add")
-    public String addPatient(@RequestBody Patient patient) {
+    public ResponseEntity addPatient(@RequestBody Patient patient) {
 
         try
         {
-            patientService.addPatient(patient);
-            return "Patient has been Added";
+           Patient savedPatient =  patientService.addPatient(patient);
+            return new ResponseEntity(savedPatient, HttpStatus.CREATED);
         }
         catch (Exception e)
         {
-            return e.getMessage();
+            return new ResponseEntity("invalid request", HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -19,6 +19,7 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //its like Auto-Increment
     private int id;
 
+    @Column(name = "full_name")
     private String name;
 
     private  int age;
