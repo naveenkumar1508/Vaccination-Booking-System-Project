@@ -24,7 +24,6 @@ public class DoctorController {
     //GET THE DOCTOR BY ID
 
     //Delete the doctor by id
-
     @DeleteMapping("/delete")
     public String deleteDoctor(@RequestParam("id") int id) {
         return doctorService.deleteDoctor(id);

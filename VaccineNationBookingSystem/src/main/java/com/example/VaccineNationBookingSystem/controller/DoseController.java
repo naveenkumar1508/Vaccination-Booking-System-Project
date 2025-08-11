@@ -20,4 +20,8 @@ public class DoseController {
 
         return doseService.addDose(patientId, vaccineBrand);
     }
+
+    //1) Make entity relationships
+    //2) make doctor apis
+    //3) make api to vaccinate a patient
 }

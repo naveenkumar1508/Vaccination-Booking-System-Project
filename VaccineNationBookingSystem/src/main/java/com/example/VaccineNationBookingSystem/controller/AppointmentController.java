@@ -1,5 +1,6 @@
 package com.example.VaccineNationBookingSystem.controller;
 
+import com.example.VaccineNationBookingSystem.dto.response.AppointmentResponse;
 import com.example.VaccineNationBookingSystem.model.Appointment;
 import com.example.VaccineNationBookingSystem.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class AppointmentController {
                                           @RequestParam("did") int doctorId) {
 
         try {
-            Appointment appointment = appointmentService.bookAppointment(patientId, doctorId);
+            AppointmentResponse appointment = appointmentService.bookAppointment(patientId, doctorId);
             return new ResponseEntity<>(appointment, HttpStatus.CREATED);
         }
         catch (Exception e)
@@ -31,5 +32,13 @@ public class AppointmentController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }
 
+
+        //get all the appointment after a particular date
+
+        //get all the appointments with a particular doctor
+
+        //make api to change the status of appointment
+
+        //get appointment details of a particular patient
     }
 }
